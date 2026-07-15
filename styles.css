@@ -1543,6 +1543,23 @@ button {
 }
 
 @media (max-width: 480px) {
+  .nav-badge-wrapper {
+    display: none;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .about, .records, .goals-media, .sponsorship {
+    padding: 50px 0;
+  }
+
+  .section-desc {
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+  }
+
   .hero-actions {
     flex-direction: column;
   }
@@ -1553,6 +1570,23 @@ button {
   
   .stat-card {
     padding: 20px;
+  }
+
+  .spotlight-card {
+    padding: 20px;
+  }
+
+  .spotlight-content {
+    gap: 20px;
+  }
+
+  .quote-card-highlight {
+    padding: 24px;
+  }
+
+  .quote-card-highlight blockquote {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
   }
 }
 
