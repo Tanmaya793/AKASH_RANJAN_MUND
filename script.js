@@ -194,4 +194,95 @@ document.addEventListener('DOMContentLoaded', () => {
   if (statsSection) {
     statsObserver.observe(statsSection);
   }
+
+  /* ==========================================
+     CAREER RECORDS ACCORDION
+     ========================================== */
+  const accordions = document.querySelectorAll('.accordion-item');
+  accordions.forEach(acc => {
+    const header = acc.querySelector('.record-card-header');
+    header.addEventListener('click', () => {
+      const isOpen = acc.classList.contains('expanded');
+      
+      // Close other accordions in the same panel
+      const panel = acc.closest('.tab-panel');
+      panel.querySelectorAll('.accordion-item').forEach(item => {
+        item.classList.remove('expanded');
+      });
+      
+      if (!isOpen) {
+        acc.classList.add('expanded');
+      }
+    });
+  });
+
+  /* ==========================================
+     DRIFT EMBERS CANVAS PARTICLES
+     ========================================== */
+  const canvas = document.getElementById('embersCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = canvas.offsetWidth);
+    let height = (canvas.height = canvas.offsetHeight);
+    
+    // Handle resize
+    window.addEventListener('resize', () => {
+      width = canvas.width = canvas.offsetWidth;
+      height = canvas.height = canvas.offsetHeight;
+    });
+    
+    const particles = [];
+    const maxParticles = 40;
+    
+    class GoldParticle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 50;
+        this.size = Math.random() * 2 + 1;
+        this.speedY = -(Math.random() * 0.4 + 0.1);
+        this.speedX = Math.random() * 0.3 - 0.15;
+        this.opacity = Math.random() * 0.5 + 0.1;
+        this.fadeSpeed = Math.random() * 0.002 + 0.0005;
+      }
+      
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        this.speedX += Math.sin(this.y * 0.01) * 0.01;
+        this.opacity -= this.fadeSpeed;
+        
+        if (this.opacity <= 0 || this.y < -10) {
+          this.x = Math.random() * width;
+          this.y = height + 10;
+          this.size = Math.random() * 2 + 1;
+          this.speedY = -(Math.random() * 0.4 + 0.1);
+          this.speedX = Math.random() * 0.3 - 0.15;
+          this.opacity = Math.random() * 0.5 + 0.2;
+        }
+      }
+      
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(224, 184, 112, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+    
+    // Initialize
+    for (let i = 0; i < maxParticles; i++) {
+      particles.push(new GoldParticle());
+      particles[i].y = Math.random() * height;
+    }
+    
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
 });
