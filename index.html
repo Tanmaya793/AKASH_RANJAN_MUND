@@ -54,6 +54,7 @@
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#achievements" class="nav-link">Achievements</a></li>
         <li><a href="#records" class="nav-link">Career Records</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
         <li><a href="#goals" class="nav-link">Future Goals</a></li>
         <li><a href="#sponsorship" class="nav-btn">Sponsor</a></li>
       </ul>
@@ -68,8 +69,8 @@
   <!-- Hero Section -->
   <header class="hero">
     <div class="hero-bg-overlay"></div>
+    <div class="hero-gradient-mask"></div>
     <canvas id="embersCanvas" class="embers-canvas"></canvas>
-    <img src="assets/hero_athlete.jpg" alt="Akash Ranjan Mund in intense badminton action" class="hero-image">
     
     <div class="hero-content-wrapper">
       <div class="hero-main">
@@ -98,8 +99,8 @@
         </div>
         
         <div class="hero-actions fade-in">
-          <a href="#achievements" class="btn btn-primary">
-            <span>Explore Achievements</span>
+          <a href="#about" class="btn btn-primary">
+            <span>Explore Journey</span>
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="m9 18 6-6-6-6"></path>
             </svg>
@@ -107,7 +108,7 @@
           <a href="#records" class="btn btn-secondary">Full Career Record</a>
         </div>
       </div>
-      
+
       <!-- Hero Stat Panels -->
       <div class="hero-stats fade-in">
         <div class="stat-card glass-card">
@@ -116,7 +117,7 @@
             <span class="stat-badge trend-up">▲ Rising</span>
           </div>
           <div class="stat-value" data-target="48">#92</div>
-          <p class="stat-footer">BWF World SL3 Men's Singles</p>
+          <p class="stat-footer">BWF World SL3 Singles</p>
         </div>
         <div class="stat-card glass-card gold-border">
           <div class="stat-header">
@@ -145,7 +146,7 @@
         <!-- Left: Portrait & Biography -->
         <div class="about-left reveal">
           <div class="about-image-frame">
-            <img src="assets/portrait_athlete.jpg" alt="Akash Ranjan Mund smiling with gold medal" class="about-image">
+            <img src="assets/podium_bite.jpg" alt="Akash Ranjan Mund biting his gold medal on the podium" class="about-image">
             <div class="about-image-badges">
               <span class="tag-badge">BWF Athlete</span>
               <span class="tag-badge">Odisha's Pride</span>
@@ -692,7 +693,69 @@
     </div>
   </section>
 
-  <!-- Section 3: Roadmap & Press -->
+  <!-- Section 3: Championship Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Visuals</span>
+        <h2 class="section-title">Championship <span class="text-gold">Gallery</span></h2>
+        <p class="section-desc">Browse through the real tournament highlights, podium moments, and training logs of Akash's historic international campaigns.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/gallery_1.jpg" alt="Akash Ranjan Mund receiving congratulations from officials" class="gallery-img">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Odisha Felicitation</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery_2.jpg" alt="Akash on the podium holding Indian flag" class="gallery-img">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Podium Triumph</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery_3.jpg" alt="Akash in intense badminton court action" class="gallery-img">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Mersin Court Play</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery_4.jpg" alt="Akash celebrating victory close-up" class="gallery-img">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Gold Medal Celebration</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery_5.jpg" alt="Akash during doubles play in Turkey" class="gallery-img">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Mixed Doubles Campaign</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery_6.jpg" alt="Akash holding official merit certificate" class="gallery-img">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">National Recognition</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery_7.jpg" alt="Akash holding championship trophy" class="gallery-img">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Championship Trophy</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/track_medals.jpg" alt="Akash holding three medals on the track with state officials" class="gallery-img">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Triple Medal Triumph</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Roadmap & Press -->
   <section class="goals-media" id="goals">
     <div class="container">
       <div class="goals-media-grid">
@@ -767,11 +830,13 @@
             <div class="quote-author-line"></div>
             <cite>Featured across regional & national press</cite>
           </div>
-          <div class="media-logo-list">
-            <span class="media-tag">The Sunday Express</span>
-            <span class="media-tag">OrissaPOST</span>
-            <span class="media-tag">Dharitri</span>
-            <span class="media-tag">Sambad</span>
+          <div class="press-clipping-card glass-card">
+            <img src="assets/newspaper.jpg" alt="Sunday Express newspaper article featuring Akash Ranjan Mund" class="press-clipping-image">
+            <div class="press-clipping-caption">Featured in Sunday Express print edition</div>
+          </div>
+          <div class="press-clipping-card glass-card">
+            <img src="assets/press_mic.jpg" alt="Akash Ranjan Mund addressing the press at the airport" class="press-clipping-image">
+            <div class="press-clipping-caption">Mersin Homecoming Press Address</div>
           </div>
         </div>
       </div>
@@ -856,6 +921,15 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox Modal for Gallery and Clickable Images -->
+  <div id="lightbox" class="lightbox-modal">
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next">&#10095;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Enlarged view">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

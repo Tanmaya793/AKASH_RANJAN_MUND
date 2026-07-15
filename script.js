@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================== */
   const navbar = document.getElementById('navbar');
   const sections = document.querySelectorAll('section, header');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navLinks = document.querySelectorAll('.nav-link, .nav-btn');
   
   window.addEventListener('scroll', () => {
     // Sticky Class
@@ -284,5 +284,108 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(animate);
     }
     animate();
+  }
+
+  /* ==========================================
+     LIGHTBOX MODAL LOGIC
+     ========================================== */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.querySelector('.lightbox-close');
+  const prevBtn = document.querySelector('.lightbox-prev');
+  const nextBtn = document.querySelector('.lightbox-next');
+
+  if (lightbox && lightboxImg && lightboxClose) {
+    let currentGalleryImages = [];
+    let currentGalleryIndex = 0;
+    
+    // Open Lightbox on Gallery Item Click
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const galleryImgElements = Array.from(galleryItems).map(item => item.querySelector('.gallery-img'));
+
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        currentGalleryImages = galleryImgElements.map(img => img.src);
+        currentGalleryIndex = index;
+        
+        openLightbox(currentGalleryImages[currentGalleryIndex], galleryImgElements[currentGalleryIndex].alt);
+        showNavButtons(true);
+      });
+    });
+
+    // Open Lightbox on other page images (like Hero or Biography) when clicked!
+    const clickableImages = document.querySelectorAll('.about-image, .press-clipping-image, .hero-split-image');
+    clickableImages.forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        currentGalleryImages = [img.src];
+        currentGalleryIndex = 0;
+        openLightbox(img.src, img.alt);
+        showNavButtons(false);
+      });
+    });
+
+    function openLightbox(src, caption) {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = src;
+      lightboxCaption.textContent = caption;
+    }
+
+    function showNavButtons(show) {
+      if (prevBtn && nextBtn) {
+        prevBtn.style.display = show ? 'block' : 'none';
+        nextBtn.style.display = show ? 'block' : 'none';
+      }
+    }
+
+    // Next / Prev Button click handlers
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentGalleryIndex > 0) {
+          currentGalleryIndex--;
+          openLightbox(currentGalleryImages[currentGalleryIndex], galleryImgElements[currentGalleryIndex].alt);
+        }
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentGalleryIndex < currentGalleryImages.length - 1) {
+          currentGalleryIndex++;
+          openLightbox(currentGalleryImages[currentGalleryIndex], galleryImgElements[currentGalleryIndex].alt);
+        }
+      });
+    }
+
+    // Close Lightbox
+    lightboxClose.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+      }
+    });
+
+    // Keyboard support (Escape to close, left/right to navigate)
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') {
+          lightbox.style.display = 'none';
+        } else if (e.key === 'ArrowLeft' && prevBtn && prevBtn.style.display !== 'none') {
+          if (currentGalleryIndex > 0) {
+            currentGalleryIndex--;
+            openLightbox(currentGalleryImages[currentGalleryIndex], galleryImgElements[currentGalleryIndex].alt);
+          }
+        } else if (e.key === 'ArrowRight' && nextBtn && nextBtn.style.display !== 'none') {
+          if (currentGalleryIndex < currentGalleryImages.length - 1) {
+            currentGalleryIndex++;
+            openLightbox(currentGalleryImages[currentGalleryIndex], galleryImgElements[currentGalleryIndex].alt);
+          }
+        }
+      }
+    });
   }
 });
