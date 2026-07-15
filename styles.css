@@ -1420,17 +1420,9 @@ button {
    ========================================== */
 @media (max-width: 1024px) {
   .hero-content-wrapper {
-    grid-template-cols: 1fr;
-    gap: 50px;
-  }
-  
-  .hero-stats {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  .stat-card {
-    flex: 1;
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 40px;
   }
   
   .about-grid {
@@ -1475,6 +1467,7 @@ button {
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 99;
+    overflow-y: auto;
   }
   
   .nav-links.active {
@@ -1487,7 +1480,29 @@ button {
   }
   
   .hero-stats {
+    grid-template-cols: 1fr;
+  }
+  
+  .stat-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .stat-card:last-child {
+    border-bottom: none;
+  }
+  
+  .record-card-header {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .record-card-right {
+    align-self: flex-start;
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
   }
   
   .dashboard-tabs {
@@ -1640,29 +1655,7 @@ button {
   border-left: 3px solid var(--bronze);
 }
 
-@media (max-width: 768px) {
-  .record-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .record-card-right {
-    align-self: flex-start;
-    margin-left: 0;
-    width: 100%;
-    justify-content: space-between;
-  }
-  .hero-stats {
-    grid-template-cols: 1fr;
-  }
-  .stat-card {
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
-  }
-  .stat-card:last-child {
-    border-bottom: none;
-  }
-}
+
 
 /* ==========================================
    EMBERS CANVAS BACKGROUND
