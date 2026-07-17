@@ -388,4 +388,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* ==========================================
+     MOBILE RESPONSIVE SPONSOR MAIL REDIRECT
+     ========================================== */
+  const sponsorBtn = document.getElementById('sponsorBtn');
+  if (sponsorBtn) {
+    sponsorBtn.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        window.location.href = 'mailto:akash.onelegeagle@gmail.com';
+      }
+    });
+  }
 });
