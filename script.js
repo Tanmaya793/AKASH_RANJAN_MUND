@@ -401,4 +401,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* ==========================================
+     GALLERY SHOW MORE / SHOW LESS
+     ========================================== */
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (showMoreBtn && galleryGrid) {
+    showMoreBtn.addEventListener('click', () => {
+      const isExpanded = galleryGrid.classList.toggle('expanded');
+      showMoreBtn.textContent = isExpanded ? 'Show Less' : 'Show More Photos';
+      if (!isExpanded) {
+        document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 });

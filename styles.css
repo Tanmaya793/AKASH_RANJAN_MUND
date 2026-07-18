@@ -1921,8 +1921,18 @@ button {
 
 .gallery-grid {
   display: grid;
-  grid-template-cols: repeat(4, 1fr);
+  grid-template-cols: repeat(3, 1fr);
   gap: 24px;
+}
+
+.gallery-grid:not(.expanded) .gallery-item.hidden-item {
+  display: none;
+}
+
+.gallery-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .gallery-item {
@@ -2015,6 +2025,9 @@ button {
   .gallery-grid {
     grid-template-cols: repeat(2, 1fr);
   }
+  .gallery-item:last-child {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2059,6 +2072,9 @@ button {
 @media (max-width: 600px) {
   .gallery-grid {
     grid-template-cols: 1fr;
+  }
+  .gallery-item:last-child {
+    grid-column: span 1;
   }
   
   .lightbox-prev, .lightbox-next {
@@ -2206,6 +2222,24 @@ button {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Custom scrollbar for news links list */
+.news-links-list::-webkit-scrollbar {
+  width: 5px;
+}
+.news-links-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.news-links-list::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+.news-links-list::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
 }
 
 .news-link-item {
